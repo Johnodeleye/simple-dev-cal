@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    
+    <!-- Calculator buttons -->
+    <p>
+        <button onclick="addToCalculation('1')">1</button>
+        <button onclick="addToCalculation('2')">2</button>
+        <button onclick="addToCalculation('3')">3</button>
+        <button onclick="addToCalculation(' + ')">+</button>
+    </p>
+    <p>
+        <button onclick="addToCalculation('4')">4</button>
+        <button onclick="addToCalculation('5')">5</button>
+        <button onclick="addToCalculation('6')">6</button>
+        <button onclick="addToCalculation(' - ')">-</button>
+    </p>
+    <p>
+        <button onclick="addToCalculation('7')">7</button>
+        <button onclick="addToCalculation('8')">8</button>
+        <button onclick="addToCalculation('9')">9</button>
+        <button onclick="addToCalculation(' * ')">*</button>
+    </p>
+    <p>
+        <button onclick="addToCalculation('0')">0</button>
+        <button onclick="addToCalculation('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="addToCalculation(' / ')">/</button>
+    </p>
+    <p>
+        <button onclick="backspace()">⌫</button>
+        <button onclick="clearCalculation()">C</button>
+    </p>
+
+    <a href="/calculator.html">Click here to see the final version of the project.</a>
+
+    <!-- //javascript function -->
+    <script>
+        // Variable to store the calculation
+        let calculation = '';
+        
+        // This is Function to add values to the calculation
+        function addToCalculation(value) {
+            calculation += value;
+            console.log('Current calculation:', calculation);
+        }
+        
+        // This is Function to calculate the result
+        function calculate() {
+            try {
+                const result = eval(calculation);
+                console.log('Result:', result);  // result
+                calculation = ''; // Reset calculation
+            } catch (error) {
+                console.log('Error in calculation:', error);
+                calculation = '';
+            }
+        }
+        
+        // aND THIS Isi Function to remove last character (backspace)
+        function backspace() {
+            if (calculation.length > 0) {
+                calculation = calculation.slice(0, -1);
+                console.log('After backspace:', calculation || '0');
+            } else {
+                console.log('0');
+            }
+        }
+        
+        // Function to clear everything
+        function clearCalculation() {
+            calculation = '';
+            console.clear();
+            console.log('0');
+        }
+    </script>
+</body>
+</html>
